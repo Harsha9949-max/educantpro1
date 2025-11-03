@@ -22,6 +22,11 @@ const ParentDashboard = () => {
     const [selectedChildIndex, setSelectedChildIndex] = useState(0);
     const child = parentData.children[selectedChildIndex];
 
+    // Changed: Added null check for child before creating statCards
+    if (!child) {
+        return <div>No child data available</div>;
+    }
+
     const statCards = [
         { title: 'Overall Grade', value: child.stats.grade, icon: '📊' },
         { title: 'Attendance', value: child.stats.attendance, icon: '👍' },

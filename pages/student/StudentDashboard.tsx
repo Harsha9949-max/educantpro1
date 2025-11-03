@@ -124,6 +124,9 @@ const SyllabusTracker: React.FC = () => {
         if (dragItem.current === null || dragOverItem.current === null) return;
         const newTopics = [...topics];
         const dragItemContent = newTopics[dragItem.current];
+        // Changed: Added null check for dragItemContent
+        if (!dragItemContent) return;
+        
         newTopics.splice(dragItem.current, 1);
         newTopics.splice(dragOverItem.current, 0, dragItemContent);
         dragItem.current = null;

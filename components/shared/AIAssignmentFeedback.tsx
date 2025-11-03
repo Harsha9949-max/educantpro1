@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Card from '../ui/Card';
 import Spinner from '../ui/Spinner';
-import { getAIAssignmentFeedback } from '../../services/geminiService';
+import { getAssignmentFeedback } from '../../services/geminiService'; // Changed: Fixed import name
 
 const AIAssignmentFeedback: React.FC = () => {
     const [subject, setSubject] = useState('General');
@@ -13,7 +13,7 @@ const AIAssignmentFeedback: React.FC = () => {
         if (!assignmentText.trim()) return;
         setIsLoading(true);
         setFeedback(null);
-        const result = await getAIAssignmentFeedback(subject, assignmentText);
+        const result = await getAssignmentFeedback(assignmentText); // Changed: Updated function call to match import
         setFeedback(result);
         setIsLoading(false);
     };
